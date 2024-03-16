@@ -1,0 +1,57 @@
+/*===========================================================================
+	ROFI Colour Theme
+	GWM-1
+	Nicholas Granda-Watkins
+	Created Dec 21, 2023
+============================================================================*/
+
+configuration{
+	display-drun: "Veni! Veni!:";
+	display-window: "Mephistopholes?";
+	drun-display-format: "{icon} {name}";
+	font: "Chakra Petch Light:style=Light,Regular 11";
+	modi: "window,run,drun,ssh";
+	show-icons: true;
+	icon-theme: "Obsidian-Green";
+}
+
+@theme "/dev/null"
+
+* {
+	/*colour palette*/
+	clear:#00000005;
+	d-green:#072B0944;
+	d-blue:#09072B44;
+	ghost:#EEEEEE44;
+	l-green:#BBE8BE;
+
+	background-color: @clear;
+	border-color: @ghost;
+	text-color:@l-green;
+}
+
+window{
+	background-image:linear-gradient(to bottom,#09072B88,#072b0988);
+	width: 720px;
+	padding: 25px;
+}
+
+inputbar{
+	padding:10px;
+}
+
+listview{
+	lines: 8;
+	spacing: 10px;
+}
+
+element-icon{
+	size: 25px;
+}
+
+element-text selected{
+	text-color:#072B09;
+	background-color:#BBE8BE;
+}
+
+/*when you forget what all this is, run $man rofi-theme to figure it out again*/
