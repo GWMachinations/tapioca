@@ -24,9 +24,15 @@ exec_always --no-startup-id feh --bg-fill ~/.config/i3/monitor-primary.png ~/.co
 exec_always --no-startup-id picom  --config ~/.config/picom.conf -b
 exec_always --no-startup-id python3 ~/.config/i3/dynamicBorder.py
 
+#set colors - may cause crash or need fo reload
+exec_always --no-startup-id python3 ~/.config/i3/setPalette.py
+
+#initialize conky
+exec_always --no-startup-id conky -c ~/.config/conky/conkyMain.conf &
+
 #set keyboard layouts:
-exec_always i3run setxkbmap -layout us, us dvorak
-exec_always i3run setxkbmap -option 'grp:ctrl_alt_toggle'
+#exec_always i3run setxkbmap -layout us, us dvorak
+#exec_always i3run setxkbmap -option 'grp:ctrl_alt_toggle'
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -103,7 +109,7 @@ bindcode $mod+Shift+55 split v
 # enter fullscreen mode for the focused container qwerty(41) = f
 bindcode $mod+41 fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split) qwerty(39):s, 25:w, 26:e
+# change container layout (stacked, tabbed, toggle split) qwerty(39):s, 28:t, 40:d 26:e
 bindcode $mod+Shift+39 layout stacking
 bindcode $mod+Shift+28 layout tabbed
 bindcode $mod+Shift+40 layout default
@@ -135,6 +141,12 @@ bindcode $mod+33 workspace $ws4a
 bindcode $mod+47 workspace $ws4b
 bindcode $mod+61 workspace $ws4c
 
+#switch to workspace sets (all I, or all II, etc)
+bindcode $mod+Ctrl+30 workspace $ws1a; workspace $ws1c; workspace $ws1b
+bindcode $mod+Ctrl+31 workspace $ws2a; workspace $ws2c; workspace $ws2b
+bindcode $mod+Ctrl+32 workspace $ws3a; workspace $ws3c; workspace $ws3b
+bindcode $mod+Ctrl+33 workspace $ws4a; workspace $ws4c; workspace $ws4b
+
 # move focused container to workspace
 bindcode $mod+Shift+30 move container to workspace $ws1a; workspace $ws1a
 bindcode $mod+Shift+44 move container to workspace $ws1b; workspace $ws1b
@@ -159,8 +171,9 @@ bindcode $mod+17 exec --no-startup-id i3run --class qalculate -- qalculate --cla
 for_window [class="qalculate"] floating enable
 bindcode $mod+18 exec --no-startup-id i3run  --class dictClass -- gnome-terminal --class dictClass
 for_window [class="dictClass"] floating enable
-bindcode $mod+19 exec --no-startup-id i3run --class Conky -- conky -c ~/.config/conky.conkyMain.conf --class Conky
+bindcode $mod+10 exec --no-startup-id i3run --class Conky -- conky -c ~/.config/conky.conkyMain.conf & --class Conky
 for_window [class="Conky"] floating enable
+#10 = qwerty 1
 bindcode $mod+20 exec --no-startup-id i3run --class notes -- firefox --no-remote -P default --class notes --new-window https://keep.google.com
 for_window [class="notes"] floating enable
 
@@ -203,25 +216,25 @@ set $ghost #EEEEEE44
 
 #gnome-palette
 #root 4 - b,g,o,p
-set $gp1 #334b57
-set $gp2 #425733
-set $gp3 #574733
-set $gp4 #553357
+set $gp1 #F6B32D
+set $gp2 #ec6717
+set $gp3 #a12019
+set $gp4 #ffdc3a
 #group 2 blues
-set $gp5 #7e8e96
-set $gp6 #98c1d6
-set $gp7 #75d1ff
-set $gp8 #88967e
+set $gp5 #fff9f2
+set $gp6 #101010
+set $gp7 #5a6b65
+set $gp8 #231813
 #group 3 greens
-set $gp9 #b2d698
-set $gp10 #afff75
-set $gp11 #968c7e
-set $gp12 #d6ba98
+set $gp9 #9d754e
+set $gp10 #c37671
+set $gp11 #7e2315
+set $gp12 #ffcda3
 #group 4 purples
-set $gp13 #ffc175
-set $gp14 #957e96
-set $gp15 #d398d6
-set $gp16 #f875ff 
+set $gp13 #490813
+set $gp14 #614704
+set $gp15 #000000
+set $gp16 #ffffff 
 
 #configure windows
 title_align center
